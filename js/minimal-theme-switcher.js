@@ -7,9 +7,9 @@
 
 const themeSwitcher = {
   // Config
-  _scheme: "auto",
+  _scheme: "light", // CHANGED: Default to light mode
   menuTarget: "details.dropdown",
-  buttonsTarget: "a[data-theme-switcher]",
+  buttonsTarget: ".theme-toggle", // CHANGED: Target your specific button class
   buttonAttribute: "data-theme-switcher",
   rootAttribute: "data-theme",
   localStorageKey: "picoPreferredColorScheme",
@@ -35,15 +35,13 @@ const themeSwitcher = {
     const buttons = document.querySelectorAll(this.buttonsTarget);
     buttons.forEach((button) => {
       button.addEventListener(
-        "click",
-        (event) => {
-          event.preventDefault();
-          // Set scheme
-          this.scheme = button.getAttribute(this.buttonAttribute);
-          // Close dropdown
-          document.querySelector(this.menuTarget)?.removeAttribute("open");
-        },
-        false
+          "click",
+          (event) => {
+            event.preventDefault();
+            // Toggle logic: If current is light, switch to dark, and vice versa
+            this.scheme = this.scheme === "light" ? "dark" : "light";
+          },
+          false
       );
     });
   },
@@ -66,7 +64,18 @@ const themeSwitcher = {
 
   // Apply scheme
   applyScheme() {
+    // 1. Update the HTML attribute
     document.querySelector("html")?.setAttribute(this.rootAttribute, this.scheme);
+
+    // 2. Update the button icon animation state
+    const button = document.querySelector(this.buttonsTarget);
+    if (button) {
+      if (this.scheme === 'dark') {
+        button.classList.add('theme-toggle--toggled');
+      } else {
+        button.classList.remove('theme-toggle--toggled');
+      }
+    }
   },
 
   // Store scheme to local storage
