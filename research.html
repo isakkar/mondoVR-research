@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Prototype</title>
+    <meta name="description" content="Our project">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+</head>
+
+<body>
+<!-- Header -->
+<header class="container">
+    <nav>
+        <ul>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="prototype.html">Prototype</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                <button
+                        class="theme-toggle"
+                        type="button"
+                        title="Toggle theme"
+                        aria-label="Toggle theme"
+                >
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            class="theme-toggle__expand"
+                            viewBox="0 0 32 32"
+                    >
+                        <clipPath id="theme-toggle__expand__cutout">
+                            <path d="M0-11h25a1 1 0 0017 13v30H0Z" />
+                        </clipPath>
+                        <g clip-path="url(#theme-toggle__expand__cutout)">
+                            <circle cx="16" cy="16" r="8.4" />
+                            <path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z" />
+                        </g>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- ./ Header -->
+
+<!-- Main -->
+<main class="container">
+    <section id="content-section-1">
+        <h2>Title</h2>
+        <div class="grid">
+            <div>
+                <p>
+                    Our approach focuses on streamlining the user experience through minimalist design
+                    principles. By utilizing lightweight frameworks like Pico CSS, we ensure that the
+                    interface remains accessible and fast, regardless of the user's hardware or
+                    connection speed.
+                </p>
+                <p>
+                    This specific module explores the intersection of aesthetic appeal and functional
+                    utility. The theme toggle you see in the navigation bar is a prime example of providing
+                    user agency without cluttering the workspace with unnecessary settings or complex menus.
+                </p>
+            </div>
+
+            <div>
+                <figure>
+                    <img src="img/aleksandar-jason-a562ZEFKW8I-unsplash-2000x1000.jpg"
+                         alt="Minimalist project preview"
+                         style="border-radius: 8px;">
+                    <figcaption>
+                        Figure 1: Visualization of the minimalist interface.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- ./ Main -->
+
+<!-- Minimal theme switcher -->
+<script src="js/minimal-theme-switcher.js"></script>
+
+<!-- Modal -->
+<script src="js/modal.js"></script>
+</body>
+</html>
