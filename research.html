@@ -137,10 +137,46 @@
 </main>
 <!-- ./ Main -->
 
+<dialog id="lightbox">
+    <img id="lightbox-img" src="" alt="Enlarged view">
+</dialog>
+
 <!-- Minimal theme switcher -->
 <script src="js/minimal-theme-switcher.js"></script>
 
 <!-- Modal -->
 <script src="js/modal.js"></script>
+
+<!-- JS -->
+<script>
+    // Lightbox for image zoom
+    document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const images = document.querySelectorAll("main img");
+
+    // 1. Open Lightbox
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+            lightboxImg.src = img.src;
+            lightbox.showModal();
+            // FIX: Force scroll to top instantly
+            lightbox.scrollTop = 0; 
+        });
+    });
+
+    // 2. Close Lightbox (Clicking Background)
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            lightbox.close();
+        }
+    });
+
+    // 3. Close Lightbox (Clicking the Image itself)
+    lightboxImg.addEventListener("click", () => {
+        lightbox.close();
+    });
+});
+</script>
 </body>
 </html>

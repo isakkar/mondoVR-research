@@ -28,3 +28,47 @@
     height: 1.5em;
     display: block;
 }
+
+/* Lightbox Styles */
+#lightbox {
+    background: rgba(0, 0, 0, 0.85); /* Semi-transparent backdrop */
+    border: none;
+    padding: 0;
+    width: 100vw;   /* Full width */
+    height: 100vh;  /* Full height */
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
+
+    /* Layout: Flex column allows scrolling tall content properly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centers image horizontally */
+    justify-content: flex-start; /* Starts image at the top (Fixes cutoff) */
+}
+
+#lightbox img {
+    display: block;
+    margin: 40px auto; /* Adds space at top/bottom for better viewing */
+    width: 80%;       /* Makes the image wider on the screen */
+    height: auto;     /* Keeps original aspect ratio */
+    max-width: 1200px; /* Prevents it from becoming too distorted on huge screens */
+    cursor: zoom-out;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+/* Hide the default scrollbar on the body when lightbox is open */
+:has(dialog[open]) {
+    overflow: hidden;
+}
+
+dialog:not([open]) {
+    display: none !important;
+}
+
+/* Make images in your content look clickable */
+main img {
+    cursor: zoom-in;
+}
