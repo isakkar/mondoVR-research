@@ -1,29 +1,25 @@
 .theme-toggle {
-    /* 1. Reset Pico's default button padding and sizing */
+    /* Reset Pico's default button padding and sizing */
     padding: 0 !important;
-    width: 2.5rem !important;  /* Adjust this for button width */
-    height: 2.5rem !important; /* Keep this equal to width */
+    width: 2.5rem !important;
+    height: 2.5rem !important;
 
-    /* 2. Center the SVG inside the button */
+    /* Center the SVG inside the button */
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-
-    /* 3. Ensure the button stays circular if desired */
     border-radius: 50%;
 
-    /* 4. Scale the icon itself */
+    /* Scale the icon itself */
     font-size: 1.5rem;
 
-    /* 5. Clean up borders and backgrounds (optional) */
     border: none;
     background: transparent;
     cursor: pointer;
-    overflow: visible; /* Prevents icon clipping during animation */
+    overflow: visible;
 }
 
 .theme-toggle__expand {
-    /* Ensure the SVG fills the font-size area */
     width: 1.5em;
     height: 1.5em;
     display: block;
@@ -41,19 +37,18 @@
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden;
 
-    /* Layout: Flex column allows scrolling tall content properly */
     display: flex;
     flex-direction: column;
     align-items: center;     /* Centers image horizontally */
-    justify-content: flex-start; /* Starts image at the top (Fixes cutoff) */
+    justify-content: flex-start; /* Starts image at the top */
 }
 
 #lightbox img {
     display: block;
-    margin: 40px auto; /* Adds space at top/bottom for better viewing */
-    width: 80%;       /* Makes the image wider on the screen */
-    height: auto;     /* Keeps original aspect ratio */
-    max-width: 1200px; /* Prevents it from becoming too distorted on huge screens */
+    margin: 40px auto;
+    width: 80%;
+    height: auto;     /* Keep original aspect ratio */
+    max-width: 1200px;
     cursor: zoom-out;
     border-radius: 4px;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
@@ -68,7 +63,7 @@ dialog:not([open]) {
     display: none !important;
 }
 
-/* Make images in your content look clickable */
+/* Make images look clickable */
 main img {
     cursor: zoom-in;
 }
