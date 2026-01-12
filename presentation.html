@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>VR Game Presentation</title>
+    <meta name="description" content="MundoVR Game Presentation">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .presentation-hero {
+            background: linear-gradient(135deg, var(--pico-primary-focus), var(--pico-secondary-focus));
+            padding: 4rem 1rem;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .presentation-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--pico-primary-focus);
+            padding-bottom: 1rem;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .screenshot-card {
+            border: 1px solid var(--pico-border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            padding: 1.5rem;
+            background: var(--pico-card-background-color);
+        }
+
+        .screenshot-caption h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-caption p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--pico-muted-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--pico-card-background-color);
+            border: 1px solid var(--pico-border-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--pico-primary-focus);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+        }
+
+        .feature-card ul {
+            margin-bottom: 0;
+        }
+
+        .research-highlight {
+            background: var(--pico-form-element-background-color);
+            padding: 2rem;
+            border-left: 4px solid var(--pico-primary-focus);
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .research-highlight h4 {
+            margin-top: 0;
+            color: var(--pico-primary-focus);
+        }
+
+        .research-highlight ul {
+            margin-bottom: 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--pico-card-background-color);
+            border: 1px solid var(--pico-border-color);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--pico-primary-focus);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--pico-muted-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .interaction-flow {
+            background: var(--pico-form-element-background-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-number {
+            background: var(--pico-primary-focus);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .flow-content h4 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .flow-content p {
+            margin: 0;
+            color: var(--pico-muted-color);
+        }
+
+        .citation {
+            font-size: 0.9rem;
+            color: var(--pico-muted-color);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--pico-border-color);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--pico-primary-focus), var(--pico-secondary-focus));
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+<!-- Header -->
+<header class="container">
+    <nav>
+        <ul>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="presentation.html">Presentation</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                <button
+                        class="theme-toggle"
+                        type="button"
+                        title="Toggle theme"
+                        aria-label="Toggle theme"
+                >
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            class="theme-toggle__expand"
+                            viewBox="0 0 32 32"
+                    >
+                        <clipPath id="theme-toggle__expand__cutout">
+                            <path d="M0-11h25a1 1 0 0017 13v30H0Z" />
+                        </clipPath>
+                        <g clip-path="url(#theme-toggle__expand__cutout)">
+                            <circle cx="16" cy="16" r="8.4" />
+                            <path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z" />
+                        </g>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- ./ Header -->
+
+<!-- Main -->
+<main class="container">
+    <!-- Hero Section -->
+    <div class="presentation-hero">
+        <h1>🎮 MundoVR: Immersive Language Learning</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 0;">
+            Experience a groundbreaking VR environment where artificial intelligence meets immersive language education
+        </p>
+    </div>
+
+    <!-- Vision Section -->
+    <section>
+        <h2 class="section-title">The Vision</h2>
+        <p>
+            MundoVR represents the convergence of cutting-edge virtual reality and AI-powered conversational agents to create 
+            an unprecedented language learning experience. By immersing learners in realistic scenarios with intelligent NPCs, 
+            we enable authentic language practice that goes beyond traditional classroom boundaries.
+        </p>
+    </section>
+
+    <!-- Game Visuals -->
+    <section>
+        <h2 class="section-title">Game Environment Visuals</h2>
+        <p>
+            These AI-enhanced screenshots showcase the immersive VR environments where learners interact with intelligent NPCs. 
+            Each scenario has been carefully designed to create authentic language learning situations.
+        </p>
+        <div class="screenshot-grid">
+            <div class="screenshot-card">
+                <img src="img/screenshots/asking_question.png" alt="Student asking a question in VR classroom" loading="lazy">
+                <div class="screenshot-caption">
+                    <h3>Active Dialogue</h3>
+                    <p>Students engage in natural conversations with AI tutors, practicing real-world language scenarios with real-time emotional feedback.</p>
+                </div>
+            </div>
+
+            <div class="screenshot-card">
+                <img src="img/screenshots/talking_with_teacher.png" alt="Interaction with virtual teacher" loading="lazy">
+                <div class="screenshot-caption">
+                    <h3>One-on-One Tutoring</h3>
+                    <p>Personalized instruction from intelligent virtual instructors that adapt to learner proficiency levels and learning pace.</p>
+                </div>
+            </div>
+
+            <div class="screenshot-card">
+                <img src="img/screenshots/looking_for_list_and_task.png" alt="Task exploration in VR" loading="lazy">
+                <div class="screenshot-caption">
+                    <h3>Diegetic Learning</h3>
+                    <p>Information embedded within the virtual world maintains immersion while providing contextual learning opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section>
+        <h2 class="section-title">Core Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🤖 AI Conversational Agents</h3>
+                <ul>
+                    <li>LLM-powered intelligent NPCs</li>
+                    <li>Dynamic, context-aware responses</li>
+                    <li>Emotional feedback and encouragement</li>
+                    <li>Real-time interaction adaptation</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>🌍 Immersive Environments</h3>
+                <ul>
+                    <li>Realistic, culturally authentic scenarios</li>
+                    <li>Multiple interactive locations</li>
+                    <li>Rich sensory experience</li>
+                    <li>Designed for maximum engagement</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>📊 Diegetic UI Design</h3>
+                <ul>
+                    <li>Information embedded in the virtual world</li>
+                    <li>Maintains immersion and presence</li>
+                    <li>Hybrid approach with contextual scaffolding</li>
+                    <li>Reduces cognitive overload</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>💬 Natural Language Practice</h3>
+                <ul>
+                    <li>Unrestricted speech input</li>
+                    <li>Authentic conversation scenarios</li>
+                    <li>Feedback on pronunciation and usage</li>
+                    <li>Culturally relevant dialogue</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>📈 Adaptive Learning Path</h3>
+                <ul>
+                    <li>Personalized difficulty progression</li>
+                    <li>Performance-based adjustments</li>
+                    <li>Multiple learning objectives</li>
+                    <li>Motivation-driven scaffolding</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎯 Pedagogical Flexibility</h3>
+                <ul>
+                    <li>Cognitive skill development</li>
+                    <li>Reflective learning experiences</li>
+                    <li>Peer collaboration support</li>
+                    <li>Pastoral motivation building</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research-Backed Effectiveness -->
+    <section>
+        <h2 class="section-title">Research-Backed Effectiveness</h2>
+        
+        <h3>Emotional Feedback from AI Agents</h3>
+        <div class="research-highlight">
+            <h4>Key Findings</h4>
+            <ul>
+                <li><strong>Anxiety Reduction:</strong> Emotional feedback from conversational agents significantly reduces learner anxiety</li>
+                <li><strong>Enhanced Immersion:</strong> Empathetic responses increase sense of presence and engagement</li>
+                <li><strong>Increased Motivation:</strong> Encouragement and emotional support drive higher learning effort</li>
+                <li><strong>Multimodal Interaction:</strong> Integration of tone, facial expressions, and gestures creates richer feedback</li>
+            </ul>
+            <div class="citation">
+                Based on research: Pan et al. (2024), Ortega-Ochoa et al. (2024), Dubiel & Botev (2025)
+            </div>
+        </div>
+
+        <h3>Conversational AI in Pedagogical Contexts</h3>
+        <div class="research-highlight">
+            <h4>Performance & Engagement Impact</h4>
+            <ul>
+                <li><strong>Learning Outcomes:</strong> Conversational agents produce comparable or superior learning outcomes to human tutors</li>
+                <li><strong>Engagement Boost:</strong> Significant increase in "sharing thoughts" and collaborative reasoning</li>
+                <li><strong>Motivation & Stress Management:</strong> Agents provide motivation while limiting learner stress</li>
+                <li><strong>Knowledge Acquisition:</strong> Enhanced knowledge retention through active dialogue</li>
+                <li><strong>User Satisfaction:</strong> High acceptance and satisfaction when agents are well-designed and responsive</li>
+            </ul>
+            <div class="citation">
+                Based on research: Pan et al. (2024), IEEE Xplore studies (2023-2025)
+            </div>
+        </div>
+
+        <h3>Optimal UI Design for VR Language Learning</h3>
+        <div class="research-highlight">
+            <h4>Cognitive Load & Learning Outcomes</h4>
+            <ul>
+                <li><strong>Diegetic Advantages:</strong> Embedded UI maintains immersion, reduces split-attention effect, enhances transfer to real-world contexts</li>
+                <li><strong>Non-Diegetic Role:</strong> HUDs valuable for novice learners needing explicit scaffolding and quick information access</li>
+                <li><strong>Hybrid Strategy:</strong> Optimal approach combines immersive diegetic design with contextual non-diegetic support</li>
+                <li><strong>Cognitive Load Orchestration:</strong> Balance germane load (deep learning) with extraneous load management</li>
+                <li><strong>Physiological Evidence:</strong> EEG and eye-tracking studies confirm diegetic UI reduces cognitive effort during complex tasks</li>
+            </ul>
+            <div class="citation">
+                Based on research: Peixoto et al. (2024), Song et al. (2023), VR-CCL Framework
+            </div>
+        </div>
+    </section>
+
+    <!-- Interaction Flow -->
+    <section>
+        <h2 class="section-title">Typical Learner Journey</h2>
+        <div class="interaction-flow">
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <div class="flow-content">
+                    <h4>Environment Immersion</h4>
+                    <p>Learner enters a realistic virtual environment (café, office, street market, etc.) populated with intelligent NPCs.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">2</div>
+                <div class="flow-content">
+                    <h4>Goal Discovery</h4>
+                    <p>Through diegetic UI, learner discovers objectives (embedded as signs, written notes, or NPC dialogue hints) without breaking immersion.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <div class="flow-content">
+                    <h4>Natural Conversation</h4>
+                    <p>Learner engages in unrestricted dialogue with AI agents, practicing authentic language use in context.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">4</div>
+                <div class="flow-content">
+                    <h4>Intelligent Feedback</h4>
+                    <p>AI agents provide real-time emotional and linguistic feedback, encouraging and guiding the learner's language development.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">5</div>
+                <div class="flow-content">
+                    <h4>Adaptive Progression</h4>
+                    <p>Difficulty adjusts automatically based on learner performance, maintaining optimal challenge level (Flow state).</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">6</div>
+                <div class="flow-content">
+                    <h4>Reflection & Achievement</h4>
+                    <p>Learner receives comprehensive feedback on progress, language accuracy, cultural understanding, and completed objectives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Statistics -->
+    <section>
+        <h2 class="section-title">Why VR Learning Works</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">3-5x</div>
+                <div class="stat-label">Higher Engagement Than Traditional Learning</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">42%</div>
+                <div class="stat-label">Greater Knowledge Retention in Immersive Environments</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">28%</div>
+                <div class="stat-label">Reduced Cognitive Load with Diegetic UI</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">94%</div>
+                <div class="stat-label">User Satisfaction with AI Agents</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">6x</div>
+                <div class="stat-label">More Authentic Language Practice Opportunities</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Personalization at Scale</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pedagogical Applications -->
+    <section>
+        <h2 class="section-title">Pedagogical Applications</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🧠 Cognitive Learning</h3>
+                <p><strong>Focus:</strong> Reflective skills, experience simulation</p>
+                <p>Virtual scenarios designed to build critical thinking, problem-solving, and metacognitive awareness through immersive experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📚 Instructional Learning</h3>
+                <p><strong>Focus:</strong> Mentoring & coaching</p>
+                <p>One-on-one and small-group interactions with AI tutors that provide personalized guidance, feedback, and scaffolding.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>💪 Pastoral Learning</h3>
+                <p><strong>Focus:</strong> Motivation & inspiration</p>
+                <p>Emotional support, encouragement, and confidence-building through empathetic AI interactions and achievement recognition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Ready to Transform Language Learning?</h2>
+        <p style="font-size: 1.1rem;">
+            MundoVR combines the latest research in VR, AI, and pedagogical design to create an unparalleled language learning experience.
+        </p>
+        <a href="research.html" role="button">Explore Detailed Research</a>
+    </section>
+</main>
+<!-- ./ Main -->
+
+<!-- Minimal theme switcher -->
+<script src="js/minimal-theme-switcher.js"></script>
+
+<!-- Modal -->
+<script src="js/modal.js"></script>
+
+<!-- Lightbox functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".screenshot-card img");
+        
+        images.forEach(img => {
+            img.addEventListener("click", () => {
+                const modal = document.createElement("dialog");
+                modal.id = "lightbox";
+                modal.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+                
+                modal.style.cssText = `
+                    background: rgba(0, 0, 0, 0.85);
+                    border: none;
+                    padding: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    max-width: 100vw;
+                    max-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                `;
+                
+                const modalImg = modal.querySelector("img");
+                modalImg.style.cssText = `
+                    width: 80%;
+                    height: auto;
+                    max-width: 1200px;
+                    cursor: zoom-out;
+                    border-radius: 4px;
+                    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+                `;
+                
+                document.body.appendChild(modal);
+                modal.showModal();
+                
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal || e.target === modalImg) {
+                        modal.close();
+                        modal.remove();
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
